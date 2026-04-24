@@ -1,13 +1,16 @@
 import { motion } from "motion/react";
 import { ShieldPlus, Phone, Info, Grid2X2, Headset, ArrowRight, ShieldCheck } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const [phone, setPhone] = useState("");
 
   const handleSendOTP = (e) => {
     e.preventDefault();
-    // navigate("/verify-otp"); // Uncomment when OTP page is ready
+    const displayPhone = phone.trim() ? `+91 ${phone.trim()}` : "+91 XXXXX XXXXX";
+    navigate("/otp", { state: { phone: displayPhone } });
   };
 
   return (
@@ -83,6 +86,8 @@ export default function LoginPage() {
                   <input
                     type="tel"
                     placeholder="98765 43210"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     className="w-full bg-gray-50 border-none rounded-xl py-3.5 pl-12 pr-4 text-brand-dark font-medium placeholder:text-gray-300 focus:ring-2 focus:ring-brand-primary/20 transition-all outline-none text-sm"
                   />
                 </div>
