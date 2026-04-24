@@ -1,4 +1,5 @@
 import { Globe, Share2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -6,10 +7,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-20">
           <div className="max-w-sm">
-            <div className="flex items-center gap-2 mb-6">
+            <Link to="/" className="flex items-center gap-2 mb-6">
               <div className="w-8 h-8 bg-brand-accent rounded-lg"></div>
               <span className="font-bold text-xl text-white">The Empathetic Guardian</span>
-            </div>
+            </Link>
             <p className="text-sm leading-relaxed mb-8">
               © 2024 The Empathetic Guardian. Bridging rural health gaps with clinical authority.
             </p>
@@ -17,12 +18,12 @@ export default function Footer() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-8 text-sm">
             <div className="flex flex-col gap-4">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
             </div>
             <div className="flex flex-col gap-4">
-              <a href="#" className="hover:text-white transition-colors">Contact Us</a>
-              <a href="#" className="hover:text-white transition-colors">Rural Network</a>
+              <Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+              <Link to="/network" className="hover:text-white transition-colors">Rural Network</Link>
             </div>
             <div className="hidden lg:block"></div>
             <div className="flex gap-4 items-center">

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -27,10 +28,10 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-wrap items-center gap-4">
-            <button className="bg-brand-primary text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-brand-secondary transition-all shadow-xl shadow-brand-primary/20 group">
+            <Link to="/login" className="bg-brand-primary text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-brand-secondary transition-all shadow-xl shadow-brand-primary/20 group">
               Book a Van Visit
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
             <button className="bg-gray-200 text-brand-dark px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-gray-300 transition-all">
               <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
                 <Play className="w-4 h-4 fill-brand-primary text-brand-primary" />

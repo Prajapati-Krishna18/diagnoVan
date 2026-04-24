@@ -1,10 +1,10 @@
 import { motion } from "motion/react";
-
+import { Link } from "react-router-dom";
 
 export default function CallToAction() {
   return (
     <section id="network" className="py-20 px-6">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         className="max-w-7xl mx-auto bg-brand-primary rounded-[48px] p-12 md:p-24 text-center text-white relative overflow-hidden"
@@ -17,21 +17,20 @@ export default function CallToAction() {
             Join our growing network of rural health guardians and bring world-class diagnostics to your village.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a 
-              href="#"
+            <Link
+              to="/login"
               className="bg-brand-dark text-white border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-black transition-all shadow-xl"
             >
               Launch a Van
-            </a>
-            <a 
-              href="#"
+            </Link>
+            <Link
+              to="/login"
               className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
             >
               Become a Partner
-            </a>
+            </Link>
           </div>
         </div>
-
 
         {/* Abstract background shapes */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
