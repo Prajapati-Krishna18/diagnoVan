@@ -122,7 +122,7 @@ export default function LoginPage() {
               </button>
 
               <button
-                onClick={() => navigate("/admin/login")}
+                onClick={() => navigate("/admin-login")}
                 className="w-full bg-gray-50 text-brand-dark border-2 border-gray-100 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white hover:border-brand-primary/20 transition-all group text-sm"
               >
                 <ShieldCheck size={18} className="text-brand-dark group-hover:scale-110 transition-transform" />
