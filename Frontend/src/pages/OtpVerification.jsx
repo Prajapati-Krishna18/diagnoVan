@@ -72,8 +72,8 @@ export default function OtpVerification() {
   const handleVerify = () => {
     const code = otp.join("");
     if (code.length === 6) {
-      // Navigate to dashboard (or next page) after successful verification
-      navigate("/dashboard");
+      // Navigate to dashboard after successful verification, passing user data
+      navigate("/dashboard", { state: { user: { phone } } });
     }
   };
 
