@@ -3,6 +3,7 @@ import LandingPage from "./components/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import OtpVerification from "./pages/OtpVerification";
 import AdminLogin from "./pages/AdminLogin";
+import UserDashboard from "./pages/UserDashboard";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/otp" element={<OtpVerification />} />
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<UserDashboard />} />
       </Routes>
     </BrowserRouter>
   );
