@@ -12,7 +12,8 @@ import {
   ShieldCheck, 
   Compass, 
   Crosshair,
-  CheckCircle2
+  CheckCircle2,
+  Truck
 } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -57,6 +58,14 @@ export default function BookService() {
           </div>
 
           <div className="flex items-center gap-6">
+            <Link 
+               to="/tracking" 
+               state={{ user }}
+               className="hidden md:flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-brand-primary transition-colors pr-6 border-r border-gray-100"
+            >
+               <Truck size={18} />
+               Track Status
+            </Link>
             <button className="text-brand-dark cursor-pointer hover:bg-gray-100 p-2 rounded-full transition-all">
               <Moon size={20} />
             </button>
@@ -215,73 +224,75 @@ export default function BookService() {
           </div>
 
           {/* Sticky Sidebar */}
-          <div className="lg:w-[400px] space-y-6">
-            <div className="bg-[#E5EEF1]/50 rounded-[32px] p-8 sticky top-32">
-               <h3 className="text-2xl font-bold mb-8 text-[#004D40]">Booking Summary</h3>
-               
-               <div className="space-y-6 mb-10">
-                  {/* Summary Item: Service */}
-                  <div className="flex gap-4">
-                     <div className="w-12 h-12 bg-[#81C784]/30 rounded-xl flex items-center justify-center shrink-0">
-                        <Droplets className="text-[#004D40]" size={22} />
-                     </div>
-                     <div>
-                        <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">Service</div>
-                        <div className="font-bold text-lg">Blood Test Panel</div>
-                     </div>
-                  </div>
-
-                  {/* Summary Item: Schedule */}
-                  <div className="flex gap-4">
-                     <div className="w-12 h-12 bg-teal-200/50 rounded-xl flex items-center justify-center shrink-0">
-                        <Calendar className="text-[#004D40]" size={22} />
-                     </div>
-                     <div>
-                        <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">Schedule</div>
-                        <div className="font-bold text-lg">Wed, 14 Oct • 09:00 AM</div>
-                     </div>
-                  </div>
-
-                  {/* Summary Item: Connectivity */}
-                  <div className="flex gap-4">
-                     <div className="w-12 h-12 bg-teal-100/50 rounded-xl flex items-center justify-center shrink-0">
-                        <MapPin className="text-[#004D40]" size={22} />
-                     </div>
-                     <div>
-                        <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">Connectivity</div>
-                        <div className="flex items-center gap-2">
-                           <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                           <span className="font-bold text-lg">Van En-route Area</span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-               <div className="border-t border-teal-900/10 pt-8 mb-8 flex items-center justify-between">
-                  <span className="text-gray-500 font-medium">Estimated Fee</span>
-                  <span className="text-3xl font-bold text-[#004D40]">$45.00</span>
-               </div>
-
-               <button 
-                  onClick={() => navigate("/booking-confirmation", { state: { bookingData: { service: selectedService, date: selectedDate, time: selectedTime }, user } })}
-                  className="w-full bg-[#004D40] text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#00382e] transition-all shadow-xl shadow-teal-900/20 mb-6"
-               >
-                  Confirm Booking
-               </button>
-
-               <div className="text-[10px] text-gray-400 text-center leading-relaxed font-medium">
-                  By confirming, you agree to our <span className="text-teal-600 underline">Health Service Terms</span> and rural area visit policies.
-               </div>
-            </div>
-
-            <div className="bg-[#E3F2FD] rounded-2xl p-6 flex items-center gap-4">
-               <div className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center">
-                  <ShieldCheck className="text-blue-600" size={24} />
-               </div>
-               <div>
-                  <div className="text-sm font-bold text-blue-900">Safe & Secure Care</div>
-                  <div className="text-[10px] text-blue-900/60 font-medium">Your diagnostic data is encrypted and handled only by certified professionals.</div>
-               </div>
+          <div className="lg:w-[400px]">
+            <div className="sticky top-32 space-y-6">
+              <div className="bg-[#E5EEF1]/50 rounded-[32px] p-8">
+                 <h3 className="text-2xl font-bold mb-8 text-[#004D40]">Booking Summary</h3>
+                 
+                 <div className="space-y-6 mb-10">
+                    {/* Summary Item: Service */}
+                    <div className="flex gap-4">
+                       <div className="w-12 h-12 bg-[#81C784]/30 rounded-xl flex items-center justify-center shrink-0">
+                          <Droplets className="text-[#004D40]" size={22} />
+                       </div>
+                       <div>
+                          <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">Service</div>
+                          <div className="font-bold text-lg">Blood Test Panel</div>
+                       </div>
+                    </div>
+  
+                    {/* Summary Item: Schedule */}
+                    <div className="flex gap-4">
+                       <div className="w-12 h-12 bg-teal-200/50 rounded-xl flex items-center justify-center shrink-0">
+                          <Calendar className="text-[#004D40]" size={22} />
+                       </div>
+                       <div>
+                          <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">Schedule</div>
+                          <div className="font-bold text-lg">Wed, 14 Oct • 09:00 AM</div>
+                       </div>
+                    </div>
+  
+                    {/* Summary Item: Connectivity */}
+                    <div className="flex gap-4">
+                       <div className="w-12 h-12 bg-teal-100/50 rounded-xl flex items-center justify-center shrink-0">
+                          <MapPin className="text-[#004D40]" size={22} />
+                       </div>
+                       <div>
+                          <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-1 uppercase">Connectivity</div>
+                          <div className="flex items-center gap-2">
+                             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                             <span className="font-bold text-lg">Van En-route Area</span>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+  
+                 <div className="border-t border-teal-900/10 pt-8 mb-8 flex items-center justify-between">
+                    <span className="text-gray-500 font-medium">Estimated Fee</span>
+                    <span className="text-3xl font-bold text-[#004D40]">$45.00</span>
+                 </div>
+  
+                 <button 
+                    onClick={() => navigate("/booking-confirmation", { state: { bookingData: { service: selectedService, date: selectedDate, time: selectedTime }, user } })}
+                    className="w-full bg-[#004D40] text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#00382e] transition-all shadow-xl shadow-teal-900/20 mb-6"
+                 >
+                    Confirm Booking
+                 </button>
+  
+                 <div className="text-[10px] text-gray-400 text-center leading-relaxed font-medium">
+                    By confirming, you agree to our <span className="text-teal-600 underline">Health Service Terms</span> and rural area visit policies.
+                 </div>
+              </div>
+  
+              <div className="bg-[#E3F2FD] rounded-2xl p-6 flex items-center gap-4">
+                 <div className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center">
+                    <ShieldCheck className="text-blue-600" size={24} />
+                 </div>
+                 <div>
+                    <div className="text-sm font-bold text-blue-900">Safe & Secure Care</div>
+                    <div className="text-[10px] text-blue-900/60 font-medium">Your diagnostic data is encrypted and handled only by certified professionals.</div>
+                 </div>
+              </div>
             </div>
           </div>
         </div>

@@ -61,8 +61,8 @@ export default function BookingConfirmation() {
 
         {/* Title */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#00695C] mb-4 tracking-tight">Booking Confirmed!</h1>
-          <p className="text-gray-500 font-medium text-lg">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#00695C] mb-4 tracking-tight">Booking Confirmed!</h1>
+          <p className="text-gray-500 font-medium text-base">
             Booking ID: <span className="text-brand-primary font-bold">#RDV-88210</span>
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function BookingConfirmation() {
             <div className="flex justify-between items-start mb-10">
                <div>
                   <div className="text-[10px] font-bold tracking-[0.2em] text-gray-400 mb-2 uppercase">SERVICE SELECTED</div>
-                  <h2 className="text-3xl font-bold text-brand-dark">
+                  <h2 className="text-xl font-bold text-brand-dark">
                     {bookingData?.service === 'blood' ? 'Full Diagnostic Blood Panel' : 
                      bookingData?.service === 'xray' ? 'X-ray Digital Imaging' : 
                      bookingData?.service === 'ultrasound' ? 'Ultrasound Scan' : 'Diagnostic Service'}
@@ -145,14 +145,18 @@ export default function BookingConfirmation() {
             className="bg-[#00695C] rounded-[32px] p-10 text-white flex flex-col shadow-xl shadow-teal-900/10"
           >
             <div className="mb-8">
-               <Truck size={40} className="mb-6 opacity-80" />
-               <h3 className="text-3xl font-bold mb-4 leading-tight">Live Tracking</h3>
-               <p className="text-teal-100/70 leading-relaxed font-medium">
+               <Truck size={32} className="mb-6 opacity-80" />
+               <h3 className="text-xl font-bold mb-4 leading-tight">Live Tracking</h3>
+               <p className="text-teal-100/70 leading-relaxed font-medium text-sm">
                  Your diagnostic van is being prepared. You can track its live location now as it heads to Haripur.
                </p>
             </div>
             <div className="mt-auto">
-               <Link to="#" className="w-full bg-white text-[#00695C] py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-teal-50 transition-all group shadow-inner">
+               <Link 
+                  to="/tracking" 
+                  state={{ bookingData, user }}
+                  className="w-full bg-white text-[#00695C] py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-teal-50 transition-all group shadow-inner"
+               >
                   Track Van Location
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                </Link>
@@ -166,7 +170,7 @@ export default function BookingConfirmation() {
               <Calendar size={20} />
               Add to Calendar
            </button>
-           <Link to="/dashboard" state={{ user }} className="text-brand-primary font-bold text-lg hover:underline transition-all">
+           <Link to="/dashboard" state={{ user }} className="text-brand-primary font-bold text-base hover:underline transition-all">
               Back to Dashboard
            </Link>
         </div>
@@ -176,7 +180,7 @@ export default function BookingConfirmation() {
            {/* Abstract Terrain Background */}
            <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
            <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
-              <span className="text-[120px] font-bold text-white/50 tracking-[0.2em] uppercase">HARIPUR</span>
+              <span className="text-[60px] md:text-[80px] font-bold text-white/50 tracking-[0.2em] uppercase">HARIPUR</span>
            </div>
            
            {/* Animated Legend */}
