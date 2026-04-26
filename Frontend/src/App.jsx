@@ -5,6 +5,7 @@ import OtpVerification from "./pages/OtpVerification";
 import AdminLogin from "./pages/AdminLogin";
 import UserDashboard from "./pages/UserDashboard";
 import BookService from "./pages/BookService";
+import UserProfile from "./pages/UserProfile";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/book-service" element={<BookService />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );
