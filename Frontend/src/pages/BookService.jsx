@@ -263,7 +263,7 @@ export default function BookService() {
                </div>
 
                <button 
-                  onClick={() => navigate("/confirmation")}
+                  onClick={() => navigate("/booking-confirmation", { state: { bookingData: { service: selectedService, date: selectedDate, time: selectedTime }, user } })}
                   className="w-full bg-[#004D40] text-white py-5 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#00382e] transition-all shadow-xl shadow-teal-900/20 mb-6"
                >
                   Confirm Booking

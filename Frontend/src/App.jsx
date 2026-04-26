@@ -6,6 +6,7 @@ import AdminLogin from "./pages/AdminLogin";
 import UserDashboard from "./pages/UserDashboard";
 import BookService from "./pages/BookService";
 import UserProfile from "./pages/UserProfile";
+import BookingConfirmation from "./pages/BookingConfirmation";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/book-service" element={<BookService />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
       </Routes>
     </BrowserRouter>
   );
