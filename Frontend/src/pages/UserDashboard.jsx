@@ -42,7 +42,7 @@ export default function UserDashboard() {
             <button className="text-brand-dark cursor-pointer hover:bg-gray-100 p-2 rounded-full transition-all">
               <Moon size={20} />
             </button>
-            <Link to="/profile" className="text-brand-dark cursor-pointer hover:bg-gray-100 p-2 rounded-full transition-all border border-gray-100">
+            <Link to="/profile" state={{ user }} className="text-brand-dark cursor-pointer hover:bg-gray-100 p-2 rounded-full transition-all border border-gray-100">
               <User size={20} />
             </Link>
           </div>
