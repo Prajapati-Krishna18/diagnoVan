@@ -83,7 +83,7 @@ export default function UserDashboard() {
               <p className="text-teal-50/70 mb-10 leading-relaxed font-medium">
                 Schedule a comprehensive health screening at the nearest rural hub today.
               </p>
-              <Link to="/book" className="inline-flex bg-white text-teal-900 px-8 py-4 rounded-2xl font-bold items-center gap-2 hover:bg-teal-50 transition-all group/btn">
+              <Link to="/book-service" state={{ user }} className="inline-flex bg-white text-teal-900 px-8 py-4 rounded-2xl font-bold items-center gap-2 hover:bg-teal-50 transition-all group/btn">
                 Find Next Visit
                 <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
               </Link>
@@ -110,7 +110,7 @@ export default function UserDashboard() {
                 Certified phlebotomist will arrive at your doorstep for lab tests.
               </p>
             </div>
-            <Link to="/book" className="text-brand-primary font-bold flex items-center gap-2 group/link hover:underline mt-6">
+            <Link to="/book-service" state={{ user }} className="text-brand-primary font-bold flex items-center gap-2 group/link hover:underline mt-6">
               Book Home Collection
               <ArrowRight size={18} className="transition-transform group-hover/link:translate-x-1" />
             </Link>
