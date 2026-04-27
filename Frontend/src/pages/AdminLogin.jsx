@@ -19,7 +19,7 @@ export default function AdminLogin() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/admin/dashboard");
+    navigate("/admin-dashboard");
   };
 
   return (
