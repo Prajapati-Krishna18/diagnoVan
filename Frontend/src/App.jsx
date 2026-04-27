@@ -11,6 +11,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import TrackingInfo from "./pages/TrackingInfo";
 import AdminDashboard from "./pages/AdminDashboard";
 import OnboardingPage from "./pages/OnboardingPage";
+import VanSpecsPage from "./pages/VanSpecsPage";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/tracking" element={<TrackingInfo />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/van-specs" element={<VanSpecsPage />} />
       </Routes>
     </BrowserRouter>
   );
