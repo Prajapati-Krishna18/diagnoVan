@@ -7,6 +7,8 @@ import UserDashboard from "./pages/UserDashboard";
 import BookService from "./pages/BookService";
 import UserProfile from "./pages/UserProfile";
 import BookingConfirmation from "./pages/BookingConfirmation";
+import ForgotPassword from "./pages/ForgotPassword";
+import TrackingInfo from "./pages/TrackingInfo";
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
         <Route path="/book-service" element={<BookService />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/tracking" element={<TrackingInfo />} />
       </Routes>
     </BrowserRouter>
   );

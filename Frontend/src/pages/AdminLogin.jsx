@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function AdminLogin() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -107,6 +108,8 @@ export default function AdminLogin() {
                     </div>
                     <input
                       type="text"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g. AD-98234-X"
                       required
                       className="w-full bg-gray-50 border-none rounded-xl py-3 pl-12 pr-4 text-teal-950 font-bold placeholder:text-gray-300 focus:ring-2 focus:ring-teal-500/20 outline-none transition-all text-sm"
@@ -118,7 +121,7 @@ export default function AdminLogin() {
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
                     <label className="text-xs font-bold text-teal-950 tracking-tight">Password</label>
-                    <Link to="/admin/forgot-password" className="text-[10px] font-bold text-blue-600 hover:underline px-1">Forgot Password?</Link>
+                    <Link to="/forgot-password" state={{ email }} className="text-[10px] font-bold text-blue-600 hover:underline px-1">Forgot Password?</Link>
                   </div>
                   <div className="relative">
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
