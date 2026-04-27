@@ -116,7 +116,10 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-3">
-              <button className="w-full bg-gray-50 text-brand-dark border-2 border-gray-100 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white hover:border-brand-primary/20 transition-all group text-sm">
+              <button
+                onClick={() => navigate('/onboarding')}
+                className="w-full bg-gray-50 text-brand-dark border-2 border-gray-100 py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-white hover:border-brand-primary/20 transition-all group text-sm"
+              >
                 <Grid2X2 size={18} className="text-brand-primary group-hover:rotate-12 transition-transform" />
                 Register your Van
               </button>

@@ -10,6 +10,7 @@ import BookingConfirmation from "./pages/BookingConfirmation";
 import ForgotPassword from "./pages/ForgotPassword";
 import TrackingInfo from "./pages/TrackingInfo";
 import AdminDashboard from "./pages/AdminDashboard";
+import OnboardingPage from "./pages/OnboardingPage";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/tracking" element={<TrackingInfo />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
       </Routes>
     </BrowserRouter>
   );
