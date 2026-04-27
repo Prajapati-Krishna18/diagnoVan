@@ -19,7 +19,7 @@ export default function ForgotPassword() {
   const navigate = useNavigate();
   const location = useLocation();
   const { email: initialEmail } = location.state || {};
-  const [email, setEmail] = useState(initialEmail || "");
+  const [email, setEmail] = useState(initialEmail || "")
 
   const handleSendLink = (e) => {
     e.preventDefault();
@@ -57,7 +57,7 @@ export default function ForgotPassword() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#004D40] via-[#00695C]/80 to-transparent"></div>
            </div>
 
-           <div className="relative z-10 h-full p-12 md:p-20 flex flex-col justify-center max-w-2xl">
+           <div className="relative z-10 h-full p-12 md:p-16 flex flex-col justify-center max-w-xl mx-auto md:mx-0">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -67,33 +67,33 @@ export default function ForgotPassword() {
                 <span className="text-[10px] font-bold text-white uppercase tracking-[0.2em]">The Digital Sanctuary</span>
               </motion.div>
 
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-[1.1]">
-                Securing Rural Health Vitality.
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight tracking-tight">
+                Securing Rural<br/>Health Vitality.
               </h1>
-              <p className="text-xl text-white/70 leading-relaxed font-medium mb-16">
+              <p className="text-base text-white/60 leading-relaxed font-medium mb-10 max-w-md">
                 Account recovery is protected by multi-layer encryption. We're here to ensure your access to the rural diagnostic network remains uninterrupted and secure.
               </p>
 
               {/* Feature Cards Row */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-4">
                  {/* Secure Reset */}
-                 <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl group hover:bg-white/10 transition-all">
-                    <div className="w-12 h-12 bg-[#00695C] text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:rotate-12 transition-transform">
-                       <RefreshCcw size={24} />
+                 <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-5 rounded-2xl group hover:bg-white/10 transition-all">
+                    <div className="w-9 h-9 bg-[#00695C]/50 text-white rounded-lg flex items-center justify-center mb-4 shadow-lg group-hover:rotate-12 transition-transform">
+                       <RefreshCcw size={16} />
                     </div>
-                    <h3 className="text-white font-bold text-lg mb-2">Secure Reset</h3>
-                    <p className="text-white/50 text-sm leading-relaxed font-medium">
+                    <h3 className="text-white font-bold text-sm mb-1.5">Secure Reset</h3>
+                    <p className="text-white/40 text-[10px] leading-relaxed font-medium">
                        Encrypted single-use recovery links sent to registered devices.
                     </p>
                  </div>
-
+ 
                  {/* Admin Support */}
-                 <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl group hover:bg-white/10 transition-all">
-                    <div className="w-12 h-12 bg-[#00695C] text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:rotate-12 transition-transform">
-                       <Headset size={24} />
+                 <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-5 rounded-2xl group hover:bg-white/10 transition-all">
+                    <div className="w-9 h-9 bg-[#00695C]/50 text-white rounded-lg flex items-center justify-center mb-4 shadow-lg group-hover:rotate-12 transition-transform">
+                       <Headset size={16} />
                     </div>
-                    <h3 className="text-white font-bold text-lg mb-2">Admin Support</h3>
-                    <p className="text-white/50 text-sm leading-relaxed font-medium">
+                    <h3 className="text-white font-bold text-sm mb-1.5">Admin Support</h3>
+                    <p className="text-white/40 text-[10px] leading-relaxed font-medium">
                        24/7 technical assistance for critical system access recovery.
                     </p>
                  </div>
@@ -108,18 +108,18 @@ export default function ForgotPassword() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
               >
-                 <div className="w-14 h-14 bg-[#E0F2F1] rounded-2xl flex items-center justify-center text-[#00695C] mb-8 shadow-sm">
-                    <Key size={28} />
+                 <div className="w-12 h-12 bg-[#E0F2F1] rounded-xl flex items-center justify-center text-[#00695C] mb-6 shadow-sm border border-teal-50">
+                    <Key size={24} />
                  </div>
 
-                 <h2 className="text-4xl font-bold text-teal-950 mb-3 tracking-tight">Reset Password</h2>
-                 <p className="text-gray-500 font-medium leading-relaxed mb-12">
+                 <h2 className="text-xl font-bold text-teal-950 mb-2 tracking-tight">Reset Password</h2>
+                 <p className="text-gray-400 font-medium leading-relaxed mb-8 text-[11px] max-w-[280px]">
                    Enter your registered Admin ID or email to receive a recovery link.
                  </p>
 
                  <form onSubmit={handleSendLink} className="space-y-10">
-                    <div className="space-y-3">
-                       <label className="text-sm font-bold text-teal-950 tracking-wide uppercase opacity-50">Admin ID / Email</label>
+                    <div className="space-y-2">
+                       <label className="text-[10px] font-bold text-teal-900/40 tracking-wider uppercase">Admin ID / Email</label>
                        <div className="relative">
                           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                              <AtSign size={20} />
@@ -130,17 +130,17 @@ export default function ForgotPassword() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="e.g. AD-4829 or name@ruraldiag.com"
-                            className="w-full bg-white border-2 border-gray-100 rounded-2xl py-5 pl-12 pr-4 text-teal-950 font-bold placeholder:text-gray-300 focus:border-teal-500/30 focus:bg-gray-50 transition-all outline-none"
+                            className="w-full bg-gray-50/50 border border-gray-100 rounded-lg py-3.5 pl-12 pr-4 text-teal-950 font-bold placeholder:text-gray-300 focus:border-teal-500/20 focus:bg-white transition-all outline-none text-xs"
                           />
                        </div>
                     </div>
 
                     <button 
                       type="submit"
-                      className="w-full bg-[#00695C] text-white py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#004D40] transition-all shadow-xl shadow-teal-900/10 group"
+                      className="w-full bg-[#00695C] text-white py-3.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#004D40] transition-all shadow-lg shadow-teal-900/5 group"
                     >
                        Send Reset Link
-                       <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                  </form>
 
@@ -150,20 +150,20 @@ export default function ForgotPassword() {
                  </div>
 
                  <div className="flex justify-center">
-                    <Link to="/admin-login" className="flex items-center gap-2 text-teal-950 font-bold hover:gap-3 transition-all">
-                       <ArrowLeft size={20} />
+                    <Link to="/admin-login" className="flex items-center gap-2 text-teal-950 font-bold text-xs hover:gap-3 transition-all">
+                       <ArrowLeft size={16} />
                        Back to Login
                     </Link>
                  </div>
 
                  {/* Warning/Info Box */}
-                 <div className="mt-16 bg-[#F1F6F9] p-8 rounded-[32px] border border-[#D9E4EC] flex gap-5">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shrink-0 text-white shadow-lg shadow-blue-200 mt-1">
-                       <Info size={18} fill="currentColor" className="text-blue-600 border-none" />
+                 <div className="mt-12 bg-gray-50/50 p-5 rounded-2xl border border-gray-100 flex gap-4">
+                    <div className="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center shrink-0 text-white shadow-md shadow-blue-100 mt-0.5">
+                       <Info size={14} fill="currentColor" className="text-blue-600 border-none" />
                     </div>
                     <div>
-                       <h4 className="font-bold text-teal-950 mb-2">Trouble with recovery?</h4>
-                       <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                       <h4 className="font-bold text-teal-950 mb-1 text-xs">Trouble with recovery?</h4>
+                       <p className="text-[10px] text-gray-400 leading-relaxed font-medium">
                           If you no longer have access to your registered email, contact the Regional System Administrator for a manual identity verification.
                        </p>
                     </div>
