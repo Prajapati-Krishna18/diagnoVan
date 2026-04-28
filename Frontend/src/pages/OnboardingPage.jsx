@@ -26,7 +26,7 @@ export default function OnboardingPage() {
     { icon: UserPlus, label: 'Registration', active: true, path: '/onboarding' },
     { icon: Truck, label: 'Van Specs', active: false, path: '/van-specs' },
     { icon: FileUp, label: 'Document Upload', active: false, path: '/document-upload' },
-    { icon: Users, label: 'Team Access', active: false, path: '#' },
+    { icon: Users, label: 'Team Access', active: false, path: '/team-access' },
     { icon: FileCheck, label: 'Review', active: false, path: '#' },
   ];
 
