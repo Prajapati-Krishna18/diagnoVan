@@ -16,6 +16,7 @@ lerna-debug.log*
 # Dependencies
 node_modules/
 Frontend/node_modules/
+Backend/node_modules/
 
 # Production / Build
 dist/
