@@ -1,3 +1,4 @@
+# robots.txt — DiagnoVan
 User-agent: *
 Allow: /
 

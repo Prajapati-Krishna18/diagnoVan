@@ -1,7 +1,10 @@
+const crypto = require("crypto");
+const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const Admin = require("../models/Admin");
 const Clinic = require("../models/Clinic");
 const generateToken = require("../utils/generateToken");
+const { sendResetEmail } = require("../config/nodemailer");
 
 // Demo OTP constant (No external SMS service required)
 const DEMO_OTP = "123456";
@@ -167,9 +170,166 @@ const registerClinic = async (req, res) => {
   }
 };
 
+// ============================================================
+// @desc    Request password reset (sends email with token link)
+// @route   POST /api/auth/admin/request-reset
+// @access  Public
+// ============================================================
+const requestPasswordReset = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Email is required" });
+    }
+
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      console.log(`Password reset requested for non-existent admin: ${email}`);
+      // Return generic message to prevent email enumeration
+      return res.json({
+        success: true,
+        message: "If this email exists, a reset link has been sent",
+      });
+    }
+
+    console.log(`Generating reset token for admin: ${email}`);
+
+    // Generate a secure random token
+    const resetToken = crypto.randomBytes(32).toString("hex");
+
+    // Hash the token before storing (so a DB leak doesn't expose valid tokens)
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
+
+    // Save hashed token + expiry (15 minutes) to admin document
+    admin.resetToken = hashedToken;
+    admin.resetTokenExpiry = Date.now() + 15 * 60 * 1000; // 15 minutes
+    await admin.save();
+
+    // Build reset link with the PLAINTEXT token (user sends it back, we hash & compare)
+    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+
+    // Send email
+    await sendResetEmail(admin.email, resetLink);
+
+    res.json({
+      success: true,
+      message: "Password reset link sent to your email",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ============================================================
+// @desc    Verify if a reset token is still valid
+// @route   POST /api/auth/admin/verify-token
+// @access  Public
+// ============================================================
+const verifyResetToken = async (req, res) => {
+  try {
+    const { token } = req.body;
+
+    if (!token) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Token is required" });
+    }
+
+    // Hash the incoming token to match stored hash
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(token)
+      .digest("hex");
+
+    const admin = await Admin.findOne({
+      resetToken: hashedToken,
+      resetTokenExpiry: { $gt: Date.now() },
+    });
+
+    if (!admin) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid or expired token" });
+    }
+
+    res.json({
+      success: true,
+      message: "Token is valid",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ============================================================
+// @desc    Reset password using valid token
+// @route   POST /api/auth/admin/reset-password
+// @access  Public
+// ============================================================
+const resetPassword = async (req, res) => {
+  try {
+    const { token, newPassword } = req.body;
+
+    if (!token || !newPassword) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Token and new password are required" });
+    }
+
+    if (newPassword.length < 6) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Password must be at least 6 characters" });
+    }
+
+    // Hash incoming token to compare with stored hash
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(token)
+      .digest("hex");
+
+    const admin = await Admin.findOne({
+      resetToken: hashedToken,
+      resetTokenExpiry: { $gt: Date.now() },
+    });
+
+    if (!admin) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid or expired token" });
+    }
+
+    // Update password (pre-save hook in Admin model will hash it)
+    admin.password = newPassword;
+
+    // Invalidate the token (one-time use)
+    admin.resetToken = null;
+    admin.resetTokenExpiry = null;
+
+    await admin.save();
+
+    res.json({
+      success: true,
+      message: "Password has been reset successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 module.exports = {
   sendOTP,
   verifyOTP,
   adminLogin,
   registerClinic,
+  requestPasswordReset,
+  verifyResetToken,
+  resetPassword,
 };

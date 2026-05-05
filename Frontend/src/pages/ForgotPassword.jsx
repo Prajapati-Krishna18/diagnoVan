@@ -19,12 +19,37 @@ export default function ForgotPassword() {
 
   const location = useLocation();
   const { email: initialEmail } = location.state || {};
-  const [email, setEmail] = useState(initialEmail || "")
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState(initialEmail || "");
 
-  const handleSendLink = (e) => {
+  const handleSendLink = async (e) => {
     e.preventDefault();
-    // Logic for sending reset link would go here
-    alert("Reset link sent to your registered ID/Email: " + email);
+    setLoading(true);
+    setMessage("");
+    setError("");
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+      const response = await fetch(`${API_URL}/api/auth/admin/request-reset`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setMessage(data.message || "Reset link sent to your email");
+        alert(data.message || "Reset link sent to your registered ID/Email: " + email);
+      } else {
+        setError(data.message || "Something went wrong");
+      }
+    } catch (err) {
+      setError("Server connection error. Is backend running?");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -134,13 +159,26 @@ export default function ForgotPassword() {
                           />
                        </div>
                     </div>
+                     
+                    {error && (
+                       <div className="bg-red-50 text-red-600 p-3.5 rounded-xl text-[10px] font-bold text-center border border-red-100 animate-pulse">
+                          {error}
+                       </div>
+                    )}
+
+                    {message && (
+                       <div className="bg-emerald-50 text-emerald-600 p-3.5 rounded-xl text-[10px] font-bold text-center border border-emerald-100">
+                          {message}
+                       </div>
+                    )}
 
                     <button 
                       type="submit"
-                      className="w-full bg-[#00695C] text-white py-3.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:bg-[#004D40] transition-all shadow-lg shadow-teal-900/5 group"
+                      disabled={loading}
+                      className={`w-full ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#00695C] hover:bg-[#004D40] shadow-lg shadow-teal-900/5'} text-white py-3.5 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-all group`}
                     >
-                       Send Reset Link
-                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                       {loading ? "Sending link..." : "Send Reset Link"}
+                       {!loading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
                     </button>
                  </form>
 
