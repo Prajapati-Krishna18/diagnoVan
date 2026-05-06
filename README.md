@@ -1,6 +1,6 @@
 # 🚑 Smart Rural Diagnostic Van System (DiagnoVan)
 
-🚀 **[Live Deployed Project](https://diagno-van.vercel.app/)** | 🎨 **[Figma Design Link](https://www.figma.com/design/GqFTmj6H7xu6NuE6yG3rdb/Untitled?node-id=0-1&t=2wUdCGapQ9JoNpAU-1)** | ⚙️ **[Backend Deployed Link](https://diagnovan.onrender.com)** | 📖 **[Postman Documentation Link](https://documenter.getpostman.com/view/50840969/2sBXqKozwb)** | 🎥 **[YouTube Demo Video Link](https://youtu.be/6iEiHFm2S8s)**
+🚀 **[Live Deployed Project](https://diagnovan.vercel.app/)** | 🎨 **[Figma Design Link](https://www.figma.com/design/GqFTmj6H7xu6NuE6yG3rdb/Untitled?node-id=0-1&t=2wUdCGapQ9JoNpAU-1)** | ⚙️ **[Backend Deployed Link](https://diagnovan.onrender.com)** | 📖 **[Postman Documentation Link](https://documenter.getpostman.com/view/50840969/2sBXqKozwb)** | 🎥 **[YouTube Demo Video Link](https://youtu.be/6iEiHFm2S8s)**
 
 [![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
