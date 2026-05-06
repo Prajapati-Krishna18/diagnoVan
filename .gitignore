@@ -2,7 +2,7 @@
 
 # Environment / Sensitive files
 .env
-.github
+.github/
 
 # Logs
 logs
@@ -35,4 +35,4 @@ Frontend/dist/
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw?

@@ -1,5 +1,7 @@
 # 🚑 Smart Rural Diagnostic Van System (DiagnoVan)
 
+🚀 **[Live Deployed Project](https://diagno-van.vercel.app/)** | 🎨 **[Figma Design Link](https://www.figma.com/design/GqFTmj6H7xu6NuE6yG3rdb/Untitled?node-id=0-1&t=2wUdCGapQ9JoNpAU-1)** | ⚙️ **[Backend Deployed Link](https://diagnovan.onrender.com)** | 📖 **[Postman Documentation Link](https://documenter.getpostman.com/view/50840969/2sBXqKozwb)** | 🎥 **[YouTube Demo Video Link](https://youtu.be/6iEiHFm2S8s)**
+
 [![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb)](https://www.mongodb.com/)
@@ -64,11 +66,6 @@ The **Smart Rural Diagnostic System** bridges this gap by providing a digital pl
 7. **Report:** Results are delivered digitally to the user.
 
 ---
-
-## 🎨 Design & Prototype
-You can view the project design and prototype on Figma:
-
-👉 **[Figma Design Link](https://www.figma.com/design/GqFTmj6H7xu6NuE6yG3rdb/Untitled?node-id=0-1&t=2wUdCGapQ9JoNpAU-1)**
 
 ---
 
